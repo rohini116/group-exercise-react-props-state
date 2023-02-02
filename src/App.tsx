@@ -2,9 +2,10 @@ import './App.css';
 import { useState } from 'react';
 import ChuckCard from './components/chuck_card';
 import ChuckInfo from './components/chuck_info';
+import ChuckJoke from './components/chuck_joke';
 import Joke from './joke';
 
-function App() {
+function App(): JSX.Element {
 
 	const [chuckGreeting, setChuckGreeting] = useState<string>("I am Chuck Norris!!!")
 	const [whalesSaved, setWhalesSaved] = useState<number>(700)
@@ -25,20 +26,21 @@ function App() {
 		"id": 4,
 		"joke": "Chuck Norris does not own a stove, oven, or microwave, because revenge is a dish best served cold.",
 	}])
-
+	const [filteredJokes, setFilteredJokes] = useState<Joke>(
+    jokes.find((element) => element.id === 3) as Joke
+  	);
 	return (
-		<div className="App">
-
-			<h1>React props and state</h1>
-			<ChuckCard />
-
-			<h2>Chuck Info: </h2>
-			<ChuckInfo />
-
-			<h2>Jokes: </h2>
-
-		</div>
-	);
+    <div className="App">
+      <h1>React props and state</h1>
+      <ChuckCard greeting={chuckGreeting} />
+      <h2>Chuck Info: </h2>
+      <ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks} />
+      <h2>Jokes: </h2>
+      <>{jokes.map((element, index) => ChuckJoke(jokes[index]))}</>
+      <h2>Filtered Jokes: </h2>
+      <>{ChuckJoke(filteredJokes)}</>
+    </div>
+  );
 }
 
 export default App;

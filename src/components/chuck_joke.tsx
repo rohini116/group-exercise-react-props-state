@@ -1,10 +1,12 @@
-// An alternative way of declaring a component is to write it as a function which
-// returns a React.ReactNode. This is equivalent to the syntax in <ChuckCard/>
-function ChuckJoke(): React.ReactNode {
 
-	return (
-		<p></p>
-	)
+
+interface ChuckJokeProps {
+	"id":number,
+	"joke": string
 }
+
+function ChuckJoke(props:ChuckJokeProps): React.ReactNode {
+  return <p>{props.joke}</p>;
+};
 
 export default ChuckJoke;

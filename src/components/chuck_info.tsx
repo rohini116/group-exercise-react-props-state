@@ -1,4 +1,4 @@
-const ChuckInfo = () => {
+const ChuckInfo = (prop:any) => (
 
 	// 💡 note that this component uses an "explicit return"
 	// Compare to <ChuckCard/> which just returns the JSX directly like this:
@@ -13,16 +13,16 @@ const ChuckInfo = () => {
 	// then it's cleaner to use the implicit return style from <ChuckCard/>
 	// otherwise you can use the curly braces and return to write code first
 
-	const someVariable = ""; // you don't need this to finish this exercise, it's just to demo JS here
+	//const someVariable = ""; // you don't need this to finish this exercise, it's just to demo JS here
 
 
-	return (
+
 		<>
-			<p>Number of Whales Saved: </p>
+			<p>Number of Whales Saved: {prop.whalesSaved}</p>
 
-			<p>Number of Round House Kicks (in the last day): </p>
-		</>);
-}
+			<p>Number of Round House Kicks (in the last day): {prop.roundHouseKicks}</p>
+		</>
+);
 
 
 export default ChuckInfo;
