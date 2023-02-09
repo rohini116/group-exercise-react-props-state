@@ -26,7 +26,7 @@ function App(): JSX.Element {
 		"id": 4,
 		"joke": "Chuck Norris does not own a stove, oven, or microwave, because revenge is a dish best served cold.",
 	}])
-	const [filteredJokes, setFilteredJokes] = useState<Joke>(
+	const [filteredJoke, setFilteredJokes] = useState<Joke>(
     jokes.find((element) => element.id === 3) as Joke
   	);
 	return (
@@ -36,9 +36,15 @@ function App(): JSX.Element {
       <h2>Chuck Info: </h2>
       <ChuckInfo whalesSaved={whalesSaved} roundHouseKicks={roundHouseKicks} />
       <h2>Jokes: </h2>
-      <>{jokes.map((element, index) => ChuckJoke(jokes[index]))}</>
+      <>
+        {jokes.map((element, index) => (
+          <ChuckJoke key={index} joke={element.joke}></ChuckJoke>
+        ))}
+      </>
       <h2>Filtered Jokes: </h2>
-      <>{ChuckJoke(filteredJokes)}</>
+      <>
+        <ChuckJoke key={filteredJoke.id} joke={filteredJoke.joke}></ChuckJoke>
+      </>
     </div>
   );
 }

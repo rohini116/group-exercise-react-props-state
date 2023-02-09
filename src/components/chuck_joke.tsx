@@ -1,11 +1,11 @@
 
 
 interface ChuckJokeProps {
-	"id":number,
+	"key":number,
 	"joke": string
 }
 
-function ChuckJoke(props:ChuckJokeProps): React.ReactNode {
+const ChuckJoke = (props:ChuckJokeProps) => {
   return <p>{props.joke}</p>;
 };
 
